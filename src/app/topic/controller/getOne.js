@@ -1,4 +1,4 @@
-const topicModel = require("../model");
+const topicModel = require("../topicModel");
 
 // GET ONE TOPIC
 module.exports = async (req, res) => {

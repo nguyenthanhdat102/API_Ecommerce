@@ -13,6 +13,12 @@ module.exports = mongoose.model(
          birthday: { type: Date },
          address: [
             {
+               _id: {
+                  type: mongoose.Schema.Types.ObjectId,
+                  index: true,
+                  required: true,
+                  auto: true,
+               },
                locate: String,
                active: Boolean,
             },

@@ -1,4 +1,4 @@
-const topicModel = require("../model");
+const topicModel = require("../topicModel");
 const slug = require("slug");
 
 // CREATE A TOPIC

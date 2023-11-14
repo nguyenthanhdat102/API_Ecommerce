@@ -1,4 +1,4 @@
-const topicModel = require("../model");
+const topicModel = require("../topicModel");
 
 // DELETE A TOPIC
 module.exports = async (req, res) => {
