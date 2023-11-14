@@ -11,6 +11,10 @@ const initRouter = (app) => {
          path: "topic",
          router: topicRouter,
       },
+      // {
+      //    path: "user",
+      //    router: 'test'
+      // }
    ];
    
    routes.forEach((route) => {
