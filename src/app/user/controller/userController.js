@@ -78,7 +78,7 @@ module.exports = {
    deleteUser: async (req, res) => {
       const { userId } = req.params;
       try {
-         await User.deleteOne(userId, data);
+         await User.deleteOne({ _id: userId });
          respond(res, 200, "Xoá người dùng thành công");
       } catch (err) {
          respond(res, 500, "Internal Server Error", err);
