@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const checkRole = require("../../middleware/checkRole");
 // =====================================================
 const userCtrl = require("./controller/userController");
 const addressCtrl = require("./controller/addressController");
-const checkRole = require("../../middleware/checkRole");
 // =====================================================
 router.get("/", userCtrl.getUsers);
 router.get("/:userId", userCtrl.getUser);

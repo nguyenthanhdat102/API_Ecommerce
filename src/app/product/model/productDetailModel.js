@@ -8,22 +8,16 @@ const productDetailSchema = mongoose.Schema(
          required: true,
          ref: "Product",
       },
-      gallery: [
-         {
-            name: { type: String },
-            image: { type: String },
-         },
-      ],
-      type: { type: String },
+      typeName: { type: String },
       regularPrice: { type: Number, required: true },
       salePrice: { type: Number },
       size: [
          {
             _id: new mongoose.Types.ObjectId(),
-            name: { type: String },
-            width: { type: Number },
-            height: { type: Number },
-            weight: { type: Number },
+            sizeName: { type: String },
+            width: { type: Number, default: 0 },
+            height: { type: Number, default: 0 },
+            weight: { type: Number, default: 0 },
          },
       ],
    },

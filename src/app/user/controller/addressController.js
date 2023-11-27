@@ -1,5 +1,5 @@
 const User = require("../userModel");
-const respond = require("../../../utils/response");
+const respond = require("../../../helper/response");
 
 const addressController = {
    // [GET] ADDRESSES
@@ -50,10 +50,9 @@ const addressController = {
          );
 
          if (!updateAddressUser) {
-            respond(res, 404, null, "Không tìm thấy ID người dùng");
+            respond(res, 404, null, "Không tìm thấy người dùng");
          }
-
-         respond(res, 200, "Thêm địa chỉ thành công", null, address);
+         respond(res, 200, "Thêm địa chỉ thành công", null, updateAddressUser);
       } catch (err) {
          respond(res, 500, "Internal Server Error", err);
       }
@@ -64,19 +63,20 @@ const addressController = {
       const { userId, addressId } = req.params;
       const updateAddress = req.body;
       try {
-         const updateUser = await User.updateOne(
+         const updateUser = await User.findByIdAndUpdate(
             {
                _id: userId,
                "address._id": addressId,
             },
-            { $set: { "address.$": updateAddress } }
+            { $set: { "address.$": updateAddress } },
+            { new: true }
          );
 
-         if (updateUser.modifiedCount === 0) {
+         if (!updateUser) {
             respond(res, 404, null, "Không tìm thấy người dùng hoặc địa chỉ");
          }
 
-         respond(res, 200, "Cập nhật địa chỉ thành công");
+         respond(res, 200, "Cập nhật địa chỉ thành công", null, updateUser);
       } catch (err) {
          respond(res, 500, "Internal Server Error", err);
       }

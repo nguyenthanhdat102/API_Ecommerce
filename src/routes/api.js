@@ -4,6 +4,8 @@ require("dotenv").config();
 // =====================================================
 const topicRouter = require("../app/topic/topicRouter");
 const userRouter = require("../app/user/userRouter");
+const productRouter = require("../app/product/productRouter");
+const categoryRouter = require("../app/category/categoryRouter");
 // =====================================================
 const api_uri = process.env.PREFIX_API; // api/v1/
 const initRouter = (app) => {
@@ -15,6 +17,14 @@ const initRouter = (app) => {
       {
          path: "user",
          router: userRouter,
+      },
+      {
+         path: "product",
+         router: productRouter,
+      },
+      {
+         path: "category",
+         router: categoryRouter,
       },
    ];
 

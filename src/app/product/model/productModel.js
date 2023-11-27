@@ -5,10 +5,24 @@ const productSchema = mongoose.Schema(
    {
       name: { type: String, required: true },
       thumbnail: { type: String },
+      gallery: [
+         {
+            _id: {
+               type: mongoose.Schema.Types.ObjectId,
+               index: true,
+               required: true,
+               auto: true,
+            },
+            name: { type: String },
+            src: { type: String, required: true },
+         },
+      ],
       category: { type: mongoose.Types.ObjectId, ref: "Category" },
       brand: { type: mongoose.Types.ObjectId, ref: "Brand" },
       view: { type: Number, min: 0, default: 0 },
-      comment: { type: mongoose.Types.ObjectId, ref: "Comment" },
+      slug: { type: String },
+      status: { type: Boolean, default: true },
+      public: { type: Boolean, default: false },
    },
    {
       timestamps: true,

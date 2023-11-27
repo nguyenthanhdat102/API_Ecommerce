@@ -18,7 +18,7 @@ const checkAdminRole = async (req, res, next) => {
       // Nếu vai trò không phải là admin, tiếp tục xử lý
       next();
    } catch (error) {
-      respond(res, 500, "Internal Server Error", error);
+      return respond(res, 500, "Internal Server Error", error);
    }
 };
 

@@ -1,7 +1,7 @@
 const User = require("../userModel");
 const respond = require("../../../utils/response");
 
-module.exports = {
+const userController = {
    // GET ALL USER
    getUsers: async (req, res) => {
       try {
@@ -42,7 +42,7 @@ module.exports = {
          } = req.body;
 
          //Create user -> push locate
-         const newUser = await User.create({
+         await User.create({
             username,
             password,
             email,
@@ -52,7 +52,10 @@ module.exports = {
             birthday,
             role,
          });
-         await User.updateOne({ username }, { $push: { address: { locate } } });
+         const newUser = await User.findOneAndUpdate(
+            { username },
+            { $push: { address: { locate } } }
+         );
          respond(res, 200, "Thêm người dùng thành công", null, newUser);
       } catch (err) {
          respond(res, 500, "Internal Server Error", err);
@@ -85,3 +88,5 @@ module.exports = {
       }
    },
 };
+
+module.exports = userController;
