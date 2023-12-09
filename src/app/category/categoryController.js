@@ -69,11 +69,11 @@ const categoryController = {
          return respond(res, 500, null, error, "Internal Server Error");
       }
    },
-   // [DELETE] CATEGORY
+   // [PATCH] REMOVE CATEGORY
    deleteCategory: async (req, res) => {
       const { cateId } = req.params;
       try {
-         await Category.deleteOne({ _id: cateId });
+         await Category.updateOne({ _id: cateId }, { status: false });
          return respond(res, 200, "Xoá danh mục sản phẩm thành công !", null);
       } catch (error) {
          return respond(res, 500, null, error, "Internal Server Error");

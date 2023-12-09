@@ -7,7 +7,7 @@ const postSchema = mongoose.Schema({
    topic: { type: mongoose.Types.ObjectId, ref: "Topic" },
    description: { type: String },
    content: { type: String },
-   comment: { type: mongoose.Types.ObjectId, ref: "Comment" },
+   slug: { type: string },
 });
 
 // =====================================================

@@ -3,10 +3,10 @@ const router = express.Router();
 // =====================================================
 const brandController = require("./brandController");
 // =====================================================
-router.get("/", categoryController.getCategories);
-router.get("/:cateId", categoryController.getCategory);
-router.post("/", categoryController.createCategory);
-router.put("/:cateId", categoryController.updateCategory);
-router.delete("/:cateId", categoryController.deleteCategory);
+router.get("/", brandController.getBrands);
+router.get("/:cateId", brandController.getBrand);
+router.post("/", brandController.createBrand);
+router.put("/:cateId", brandController.updateBrand);
+router.delete("/:cateId", brandController.deleteBrand);
 // =====================================================
 module.exports = router;

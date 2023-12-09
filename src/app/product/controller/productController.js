@@ -1,12 +1,14 @@
 const Product = require("../model/productModel");
 const respond = require("../../../helper/response");
 const slug = require("slug");
-
+// =====================================================
 const productController = {
    // [GET] ALL PRODUCTS
    getProducts: async (req, res) => {
       try {
-         const products = await Product.find({ status: true });
+         const products = await Product.find({ status: true })
+            .populate("Category")
+            .populate("Brand");
          const countProduct = await Product.countDocuments({ status: true });
          return respond(res, 200, null, null, {
             products,
@@ -127,5 +129,5 @@ const productController = {
       }
    },
 };
-
+// =====================================================
 module.exports = productController;

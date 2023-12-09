@@ -1,6 +1,6 @@
 const Product = require("../model/productModel");
 const respond = require("../../../helper/response");
-
+// =====================================================
 const galleryController = {
    //[GET] ALL IMAGE
    getAllImage: async (req, res) => {
@@ -17,7 +17,7 @@ const galleryController = {
    },
 
    //[POST] ADD IMAGE
-   addImage: async (req, res) => {
+   AddImage: async (req, res) => {
       const { productId } = req.params;
       const data = req.body;
       try {
@@ -92,4 +92,5 @@ const galleryController = {
    },
 };
 
+// =====================================================
 module.exports = galleryController;
