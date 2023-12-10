@@ -3,6 +3,13 @@ const router = express.Router();
 // =====================================================
 const productController = require("./controller/productController");
 const galleryController = require("./controller/galleryController");
+const {
+   getVariant,
+   getVariants,
+   createVariant,
+   updateVariant,
+   deleteVariant,
+} = require("./controller/productVariantController");
 // =====================================================
 // PRODUCT
 router.get("/", productController.getProducts);
@@ -17,7 +24,11 @@ router.get("/:productId/gallery", galleryController.getAllImage);
 router.post("/:productId/gallery", galleryController.AddImage);
 router.put("/:productId/gallery?id=:imgId", galleryController.updateImage);
 router.delete('/"productId/gallery?id=:imgId', galleryController.deleteImage);
-
-
+//PRODUCT VARIANT
+router.get("/:productId/variant", getVariants);
+router.get("/:productId/variant?id=:variantId", getVariant);
+router.post("/:productId/variant", createVariant);
+router.put("/:productId/variant?id=:variantId", updateVariant);
+router.delete("/:productId/variant?id=:variantId", deleteVariant);
 // =====================================================
 module.exports = router;
