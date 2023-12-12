@@ -1,5 +1,5 @@
 const User = require("../app/user/userModel");
-const respond = require("../utils/response");
+const respond = require("../helper/response");
 
 // Middleware để kiểm tra vai trò trước khi thêm mới địa chỉ
 const checkAdminRole = async (req, res, next) => {

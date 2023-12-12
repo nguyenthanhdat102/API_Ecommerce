@@ -10,7 +10,7 @@ app.use(bodyParse.json());
 app.use(cors());
 
 // CONNECT DB
-connectDB();s
+connectDB();
 // INIT ROUTER
 initRouter(app);
 

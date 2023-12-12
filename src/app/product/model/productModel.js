@@ -18,6 +18,7 @@ const productSchema = mongoose.Schema(
       ],
       category: { type: mongoose.Types.ObjectId, ref: "Category" },
       brand: { type: mongoose.Types.ObjectId, ref: "Brand" },
+      comment: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
       view: { type: Number, min: 0, default: 0 },
       slug: { type: String },
       status: { type: Boolean, default: true },

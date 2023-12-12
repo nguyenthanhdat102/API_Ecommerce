@@ -6,7 +6,7 @@ const topicRouter = require("../app/topic/topicRouter");
 const userRouter = require("../app/user/userRouter");
 const productRouter = require("../app/product/productRouter");
 const categoryRouter = require("../app/category/categoryRouter");
-const brandRouter = require("../app/brand/brandController");
+const brandRouter = require("../app/brand/brandRouter");
 const supplierRouter = require("../app/supplier/supplierRouter");
 // =====================================================
 const api_uri = process.env.PREFIX_API; // api/v1/

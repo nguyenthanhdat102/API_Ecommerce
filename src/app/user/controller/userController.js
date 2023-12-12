@@ -1,5 +1,5 @@
 const User = require("../userModel");
-const respond = require("../../../utils/response");
+const respond = require("../../../helper/response");
 
 const userController = {
    // GET ALL USER
