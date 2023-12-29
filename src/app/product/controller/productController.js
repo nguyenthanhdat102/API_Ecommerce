@@ -7,8 +7,8 @@ const productController = {
    getProducts: async (req, res) => {
       try {
          const products = await Product.find({ status: true })
-            .populate("Category")
-            .populate("Brand");
+            // .populate("Category")
+            // .populate("Brand");
          const countProduct = await Product.countDocuments({ status: true });
          return respond(res, 200, null, null, {
             products,

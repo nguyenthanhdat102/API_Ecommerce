@@ -4,9 +4,9 @@ const router = express.Router();
 const brandController = require("./brandController");
 // =====================================================
 router.get("/", brandController.getBrands);
-router.get("/:cateId", brandController.getBrand);
+router.get("/:brandId", brandController.getBrand);
 router.post("/", brandController.createBrand);
-router.put("/:cateId", brandController.updateBrand);
-router.delete("/:cateId", brandController.deleteBrand);
+router.put("/:brandId", brandController.updateBrand);
+router.patch("/:brandId", brandController.deleteBrand);
 // =====================================================
 module.exports = router;

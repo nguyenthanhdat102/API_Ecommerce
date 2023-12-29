@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 module.exports = (res, status, message = null, error = null, data = null) => {
    const timestamps = new Date().toISOString();
    res.status(status).json({
@@ -5,6 +7,6 @@ module.exports = (res, status, message = null, error = null, data = null) => {
       message,
       error,
       data,
-      timestamps,
+      timestamps: moment(timestamps).format('DD-MM-YYYY'),
    });
 };

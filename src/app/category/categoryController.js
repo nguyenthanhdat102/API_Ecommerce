@@ -1,16 +1,40 @@
 const slug = require("slug");
 // =====================================================
-
 const Category = require("./categoryModel");
 const respond = require("../../helper/response");
+const paginate = require("../../helper/paginate");
 // =====================================================
 const categoryController = {
    //[GET] GET CATEGORIES
    getCategories: async (req, res) => {
+      const { q, page = 1, pageSize = 5 } = req.query || {};
+      const skip = (page - 1) * pageSize;
       try {
-         const categories = await Category.find({});
-         const total = await Category.countDocuments();
-         return respond(res, 200, null, null, { categories, total });
+         let categories = [];
+         let total = 0;
+
+         if (!q) {
+            categories = await Category.find({ status: true })
+               .sort({ updatedAt: -1 })
+               .skip(skip)
+               .limit(parseInt(pageSize));
+            total = await Category.find({ status: true }).countDocuments();
+         } else {
+            categories = await Category.find({ name: q, status: true })
+               .sort({ updatedAt: -1 })
+               .skip(skip)
+               .limit(parseInt(pageSize));
+            total = await Category.find({ name: q, status: true }).countDocuments();
+         }
+         const totalPage = await Math.ceil(total / parseInt(pageSize));
+
+         return respond(res, 200, q, null, {
+            categories,
+            total,
+            totalPage,
+            currentPage: parseInt(page),
+            pages: paginate(parseInt(page), totalPage),
+         });
       } catch (error) {
          return respond(res, 500, null, error, "Internal Server Error");
       }
